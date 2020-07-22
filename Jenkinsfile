@@ -16,7 +16,9 @@ pipeline {
             }
         }
         stage('Linting') {
-            sh 'node --version'
+            steps {
+                sh 'node --version'
+            }
         }
         stage('Security Scan') {
             steps { 
@@ -24,16 +26,24 @@ pipeline {
             }
         } 
         stage('Build Image') {
-            sh 'node --version'
+            steps {
+                sh 'node --version'
+            }
         }
         stage('Push Image') {
-            sh 'node --version'
+            steps {
+                sh 'node --version'
+            }
         }
         stage('set current kubectl context') {
-            sh 'node --version'
+            steps {
+                sh 'node --version'
+            }
         }
         stage('Deploy Container') {
-            sh 'node --version'
+            steps {
+                sh 'node --version'
+            }
         }
     }
 }
