@@ -1,20 +1,11 @@
 pipeline {
+    environment {
+        registry = "dogbern/capstone-project-green-app"
+        registryCredential = 'dockerhub'
+        dockerImage = ''
+    }
     agent { dockerfile true }
     stages {
-        stage('AWS Credentials') {
-            steps {
-                withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws_cred', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']])
-                sh """  
-                    mkdir -p ~/.aws
-                    echo "[default]" >~/.aws/credentials
-                    echo "[default]" >~/.boto
-                    echo "aws_access_key_id = ${AWS_ACCESS_KEY_ID}" >>~/.boto
-                    echo "aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}">>~/.boto
-                    echo "aws_access_key_id = ${AWS_ACCESS_KEY_ID}" >>~/.aws/credentials
-                    echo "aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}">>~/.aws/credentials
-                """
-            }
-        }
         stage('Linting') {
             steps {
                 sh 'node --version'
@@ -22,12 +13,22 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh 'node --version'
+                script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                }
             }
         }
         stage('Push Image') {
             steps {
-                sh 'node --version'
+                script {
+                    docker.withRegistry('', registryCredential)
+                    dockerImage.push()
+                }
+            }
+        }
+        stage('Remove Image from Jenkins') {
+            steps {
+                sh "docker rmi $registry:$BUILD_NUMBER"
             }
         }
         stage('set current kubectl context') {
