@@ -20,11 +20,6 @@ pipeline {
                 sh 'node --version'
             }
         }
-        stage('Security Scan') {
-            steps { 
-                aquaMicroscanner imageName: 'alpine:latest', notCompleted: 'exit 1', onDisallowed: 'fail'
-            }
-        } 
         stage('Build Image') {
             steps {
                 sh 'node --version'
