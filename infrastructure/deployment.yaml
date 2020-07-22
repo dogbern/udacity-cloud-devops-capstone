@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "green-capstone-deployment"
+  namespace: "green-capstone"
+spec:
+  selector:
+    matchLabels:
+      app: "capstone-project-app"
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: "capstone-project-app"
+    spec:
+      containers:
+      - image: dogbern/capstone_project_app:hello_udacity
+        imagePullPolicy: Always
+        name: "capstone-project-app"
+        ports:
+        - containerPort: 5000
