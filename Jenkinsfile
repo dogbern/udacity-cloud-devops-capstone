@@ -33,12 +33,12 @@ pipeline {
         }
         stage('set current kubectl context') {
             steps {
-                sh 'node --version'
+                sh 'docker images'
             }
         }
         stage('Deploy Container') {
             steps {
-                sh 'node --version'
+                sh 'docker images'
             }
         }
     }
