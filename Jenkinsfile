@@ -6,11 +6,6 @@ pipeline {
     }
     agent { dockerfile true }
     stages {
-       stage('Cloning Git') {
-            steps {
-                git 'https://github.com/dogbern/udacity-cloud-devops-capstone.git'
-            }
-        }
         stage('Build Image') {
             steps {
                 script {
