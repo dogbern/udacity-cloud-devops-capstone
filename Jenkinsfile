@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Linting') {
             steps {
-                sh 'node --version'
+                sh 'echo LINT'
             }
         }
         stage('Build Image') {
