@@ -4,8 +4,14 @@ pipeline {
         registryCredential = 'dockerhub'
         dockerImage = ''
     }
-    agent { dockerfile true }
+    agent any
+    
     stages {
+        stage('Cloning Git') {
+            steps {
+                git 'https://github.com/dogbern/udacity-cloud-devops-capstone.git'
+            }
+        }
         stage('Build Image') {
             steps {
                 script {
