@@ -6,9 +6,9 @@ pipeline {
     }
     agent { dockerfile true }
     stages {
-        stage('Linting') {
+       stage('Cloning Git') {
             steps {
-                sh 'echo LINT'
+                git 'https://github.com/dogbern/udacity-cloud-devops-capstone.git'
             }
         }
         stage('Build Image') {
