@@ -1,7 +1,7 @@
 pipeline {
     environment {
         registry = "dogbern/capstone-project-green-app"
-        registryCredential = 'dockerhub'
+        registryCredential = 'dockerhub_id'
         dockerImage = ''
     }
     agent any
@@ -22,7 +22,7 @@ pipeline {
         stage('Push Image') {
             steps {
                 script {
-                    docker.withDockerRegistry('', registryCredential)
+                    docker.withRegistry('', registryCredential)
                     dockerImage.push()
                 }
             }
@@ -32,15 +32,6 @@ pipeline {
                 sh "docker rmi $registry:$BUILD_NUMBER"
             }
         }
-        stage('set current kubectl context') {
-            steps {
-                sh 'docker images'
-            }
-        }
-        stage('Deploy Container') {
-            steps {
-                sh 'docker images'
-            }
-        }
+      
     }
 }
