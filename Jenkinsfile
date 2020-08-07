@@ -2,6 +2,7 @@ pipeline {
     environment {
         registry = "dogbern/capstone-project-green-app"
         registryCredential = 'dockerhub_id'
+        registryUrl = 'https://registry.hub.docker.com'
         dockerImage = ''
     }
     agent any
@@ -22,7 +23,7 @@ pipeline {
         stage('Push Image') {
             steps {
                 script {
-                    docker.withRegistry('https://registry.hub.docker.com', registryCredential)
+                    docker.withRegistry(registryUrl, registryCredential)
                     dockerImage.push()
                 }
             }
