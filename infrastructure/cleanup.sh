@@ -1,5 +1,5 @@
 # Delete ingress
-kubectl delete -f ingress.yaml
+kubectl delete -f ingress.yaml  (name of ingress is green-capstone-ingress)
 
 # Delete service
 kubectl delete -f service.yaml
