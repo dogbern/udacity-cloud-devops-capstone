@@ -15,6 +15,7 @@ pipeline {
         }
         stage('Lint') {
             steps {
+                sh 'chmod 750 Makefile'
                 sh 'make lint'
             }
         }
