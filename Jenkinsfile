@@ -15,7 +15,7 @@ pipeline {
         }
         stage('Lint') {
             steps {
-                sh 'make lint'
+                sh 'sudo make lint'
             }
         }
         stage('Build Image') {
