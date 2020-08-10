@@ -14,7 +14,7 @@ COPY templates /app/templates
 # Install packages from requirements.txt
 # hadolint ignore=DL3013
 #hado
-RUN pip install --upgrade pip==6.01 &&\
+RUN pip install --upgrade pip &&\
 	pip install --trusted-host pypi.python.org -r requirements.txt
 
 ## Complete Step 4:
