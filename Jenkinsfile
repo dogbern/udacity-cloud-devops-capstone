@@ -15,7 +15,9 @@ pipeline {
         }
         stage('Lint') {
             steps {
-                sh 'make lint'
+                sh 'hadolint $WORKSPACE/Dockerfile'
+                sh 'tidy -q -e $WORKSPACE/templates/index.html'
+                sh 'pylint --disable=R,C,W1203 $WORKSPACE/app.py'
             }
         }
         stage('Build Image') {
