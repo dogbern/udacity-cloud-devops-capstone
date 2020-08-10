@@ -6,7 +6,7 @@ WORKDIR /app
 
 ## Complete Step 2:
 # Copy source code to working directory
-COPY Makefile requirements.txt app.py /app/
+COPY requirements.txt app.py /app/
 COPY static /app/static
 COPY templates /app/templates 
 
