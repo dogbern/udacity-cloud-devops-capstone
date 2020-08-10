@@ -16,7 +16,7 @@ pipeline {
         stage('Lint') {
             steps {
                 sh 'hadolint --ignore DL3013 $WORKSPACE/Dockerfile'
-                sh 'tidy -q -e $WORKSPACE/*.html'
+                sh 'tidy -q -e $WORKSPACE/templates/*.html'
                 sh 'pylint --disable=R,C,W1203 $WORKSPACE/app.py'
             }
         }
