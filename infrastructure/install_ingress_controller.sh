@@ -19,5 +19,5 @@ helm --namespace green-capstone install green-capstone \
 
 
 
-kubectl -n green-capston rollout status \
+kubectl -n green-capstone rollout status \
   deployment green-capstone-aws-alb-ingress-controller

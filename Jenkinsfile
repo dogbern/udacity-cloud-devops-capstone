@@ -13,6 +13,11 @@ pipeline {
                 git 'https://github.com/dogbern/udacity-cloud-devops-capstone.git'
             }
         }
+        stage('Lint') {
+            steps {
+                sh 'make lint'
+            }
+        }
         stage('Build Image') {
             steps {
                 script {
@@ -27,6 +32,11 @@ pipeline {
                         dockerImage.push()
                     }       
                 }
+            }
+        }
+        stage('Security Scan Image') {
+            steps {
+                aquaMicroscanner imageName: "dogbern/capstone-project-green-app:$BUILD_NUMBER", notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
             }
         }
         stage('Remove Image from Jenkins') {
