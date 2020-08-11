@@ -2,7 +2,6 @@ pipeline {
     environment {
         registry = "dogbern/capstone-project-green-app"
         registryCredential = 'dockerhub_id'
-        registryUrl = 'https://registry.hub.docker.com'
         dockerImage = ''
     }
     agent any
@@ -16,7 +15,7 @@ pipeline {
         stage('Lint') {
             steps {
                 sh 'hadolint --ignore DL3013 $WORKSPACE/Dockerfile'
-                sh 'tidy -q -e *.html'
+                sh 'tidy -q -e $WORKSPACE/templates/index.html'
                 sh 'pylint --disable=R,C,W1203 $WORKSPACE/app.py'
             }
         }
