@@ -34,11 +34,6 @@ pipeline {
                 }
             }
         }
-        stage('Security Scan Image') {
-            steps {
-                aquaMicroscanner imageName: "dogbern/capstone-project-blue-app:$BUILD_NUMBER", notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
-            }
-        }
         stage('Remove Image from Jenkins') {
             steps {
                 sh "docker rmi $registry:$BUILD_NUMBER"
