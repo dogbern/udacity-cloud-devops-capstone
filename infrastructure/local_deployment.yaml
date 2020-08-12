@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capstone-project-cloud-devops
+  labels:
+    app: capstone-project-cloud-devops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: capstone-project-cloud-devops
+  template:
+    metadata:
+      labels:
+        app: capstone-project-cloud-devops
+    spec:
+      containers:
+      - name: capstone-project-cloud-devops
+        image: dogbern/capstone_project_app:hello_udacity
+        ports:
+        - containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: capstone-project-cloud-devops
+  labels:
+    app: capstone-project-cloud-devops
+spec:
+  type: LoadBalancer
+  selector:
+    app: capstone-project-cloud-devops
+  ports:
+    - protocol: TCP
+      port: 5000
+      nodePort: 30001
+      targetPort: 5000
