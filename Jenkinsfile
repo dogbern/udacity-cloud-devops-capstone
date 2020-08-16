@@ -29,14 +29,9 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(registry: [credentialsId: registryCredential]) {
-                        dockerImage.push()
+                        dockerImage.push('latest')
                     }       
                 }
-            }
-        }
-        stage('Security Scan Image') {
-            steps {
-                aquaMicroscanner imageName: "dogbern/capstone-project-green-app:$BUILD_NUMBER", notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
             }
         }
         stage('Remove Image from Jenkins') {

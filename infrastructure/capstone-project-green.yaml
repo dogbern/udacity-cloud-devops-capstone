@@ -1,0 +1,20 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: green-environment
+  region: us-east-2
+  version: "1.17"
+
+availabilityZones: ["us-east-2a", "us-east-2b"]
+
+managedNodeGroups:
+- name: green-ng
+  instanceType: t2.small
+  desiredCapacity: 1
+  ssh:
+    allow: true
+    publicKeyName: eksworkshop
+
+secretsEncryption:
+  keyARN: arn:aws:kms:us-east-2:620145408342:key/7d2dfe2a-b0ac-41a7-b566-8f6265112e75

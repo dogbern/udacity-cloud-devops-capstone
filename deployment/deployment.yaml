@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capstone-deployment-green
+  labels:
+    app: capstone-project-cloud-devops
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: capstone-project-cloud-devops
+  template:
+    metadata:
+      labels:
+        app: capstone-project-cloud-devops
+        role: green
+    spec:
+      containers:
+      - image: dogbern/capstone-project-green-app:latest
+        imagePullPolicy: Always
+        name: capstone-project-cloud-devops
+        ports:
+        - containerPort: 5000
