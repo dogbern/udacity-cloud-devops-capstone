@@ -53,7 +53,7 @@ pipeline {
 
         stage('Edit DNS record set to point to Green service') {
             steps {
-                sh '$WORKSPACE/deployment/route53.sh'
+                sh 'aws route53 change-resource-record-sets --hosted-zone-id Z047210437EDQ22T6THSN --change-batch $WORKSPACE/deployment/change_res_record_set.json'
             }
         }
       
