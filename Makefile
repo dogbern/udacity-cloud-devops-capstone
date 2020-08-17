@@ -11,13 +11,23 @@ install:
 
 test:
 	# Additional, optional, tests could go here
+<<<<<<< HEAD
 	#python -m pytest -vv --cov=myrepolib tests/*.py
 	#python -m pytest --nbval notebook.ipynb
+=======
+	# python -m pytest -vv --cov=myrepolib tests/*.py
+	# python -m pytest --nbval notebook.ipynb
+>>>>>>> blue
 
 lint:
 	# See local hadolint install instructions:   https://github.com/hadolint/hadolint
 	# This is linter for Dockerfiles
 	hadolint Dockerfile
+<<<<<<< HEAD
+=======
+	# This is linter for html
+	tidy -q -e ../templates/index.html
+>>>>>>> blue
 	# This is a linter for Python source code linter: https://www.pylint.org/
 	# This should be run from inside a virtualenv
 	pylint --disable=R,C,W1203 app.py
