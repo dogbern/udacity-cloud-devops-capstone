@@ -39,6 +39,23 @@ pipeline {
                 sh "docker rmi $registry:$BUILD_NUMBER"
             }
         }
+        stage('set current kubectl context') {
+            steps {
+                sh "kubectl config use-context i-03ffec29d41e694c3@green-environment.us-east-2.eksctl.io"
+            }
+        }
+        stage('Deploy Green Container') {
+            step {
+                sh 'kubectl appl -f $WORKSPACE/deployment/deployment.yaml'
+                sh 'kubectl appl -f $WORKSPACE/deployment/service.yaml'
+            }
+        }
+
+        stage('Edit DNS record set to point to Green service') {
+            steps {
+                sh '$WORKSPACE/deployment/route53.sh'
+            }
+        }
       
     }
 }
