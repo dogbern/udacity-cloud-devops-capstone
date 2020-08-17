@@ -1,0 +1,14 @@
+{
+	"Comment": "Updating Alias resource record sets in Route 53 for blue traffic",
+	"Changes": [{
+			   "Action": "UPSERT",
+			   "ResourceRecordSet": {
+						   "Name": "www.bambouktu.com",
+						   "Type": "A",
+						   "AliasTarget":{
+								   "HostedZoneId": "Z3AADJGX6KTTL2",
+								   "DNSName": "dualstack.a834ef8d04ca54626a4b46beea447988-1067233147.us-east-2.elb.amazonaws.com",
+								   "EvaluateTargetHealth": false
+							 }}
+						 }]
+  }
