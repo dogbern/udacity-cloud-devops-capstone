@@ -1,7 +1,0 @@
-pytest
-pylint
-jupyter
-pytest-cov
-flask
-requests
-nlib
