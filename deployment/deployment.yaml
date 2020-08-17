@@ -17,8 +17,8 @@ spec:
         role: blue
     spec:
       containers:
-      - image: dogbern/capstone-project-blue-app:latest
+      - image: dogbern/blue-app:latest
         imagePullPolicy: Always
-        name: capstone-project-cloud-devops
+        name: blue-app
         ports:
         - containerPort: 5000
