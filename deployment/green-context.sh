@@ -1,1 +1,1 @@
-kubectl config use-context i-03ffec29d41e694c3@green-environment.us-east-2.eksctl.io
+kubectl config use-context arn:aws:eks:us-east-2:620145408342:cluster/green-environment
