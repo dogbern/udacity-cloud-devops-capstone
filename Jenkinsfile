@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Remove Image from Jenkins') {
             steps {
-                sh "docker rmi $registry:$BUILD_NUMBER"
+                sh "docker rmi $registry:latest"
             }
         }
         stage('set current kubectl context') {
