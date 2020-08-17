@@ -45,7 +45,7 @@ pipeline {
                 sh 'kubectl config use-context arn:aws:eks:us-east-2:620145408342:cluster/blue-environment'
             }
         }
-        stage('Deploy Green Container') {
+        stage('Deploy Blue Container') {
             steps {
                 sh 'kubectl apply -f $WORKSPACE/deployment/deployment.yaml'
                 sh 'kubectl apply -f $WORKSPACE/deployment/service.yaml'
