@@ -40,6 +40,11 @@ pipeline {
                 sh "docker rmi $registry:latest"
             }
         }
+        stage('Security Scan Image') {
+            steps {
+                aquaMicroscanner imageName: "dogbern/capstone-project-green-app:latest", notCompliesCmd: 'exit 1', onDisallowed: 'fail', outputFormat: 'html'
+            }
+        }
         stage('set current kubectl context') {
             steps {
                 sh 'kubectl config use-context arn:aws:eks:us-east-2:620145408342:cluster/blue-environment'
