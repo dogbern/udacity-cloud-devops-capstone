@@ -1,6 +1,6 @@
 pipeline {
     environment {
-        registry = "dogbern/capstone-project-blue-app"
+        registry = "dogbern/blue-app"
         registryCredential = 'dockerhub_id'
         dockerImage = ''
     }
