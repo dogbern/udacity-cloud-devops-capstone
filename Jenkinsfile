@@ -41,13 +41,13 @@ pipeline {
         }
         stage('set current kubectl context') {
             steps {
-                sh "kubectl config use-context i-03ffec29d41e694c3@green-environment.us-east-2.eksctl.io"
+                sh "kubectl config use-context arn:aws:eks:us-east-2:620145408342:cluster/green-environment"
             }
         }
         stage('Deploy Green Container') {
             steps {
-                sh 'kubectl appl -f $WORKSPACE/deployment/deployment.yaml'
-                sh 'kubectl appl -f $WORKSPACE/deployment/service.yaml'
+                sh 'kubectl apply -f $WORKSPACE/deployment/deployment.yaml'
+                sh 'kubectl apply -f $WORKSPACE/deployment/service.yaml'
             }
         }
 
