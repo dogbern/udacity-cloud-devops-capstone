@@ -19,15 +19,21 @@ green => This branch contains code for implementing blue/green deployment
 
 This project implements a solution for blue/green deployment to achieve a zero-dowmntime deployment. /CloudFormation/Udacity DevOps Capstone project.pdf shows a high-level diagram for this implementation
 
-## Files
+## OutputFiles
 
 * **Udacity DevOps Capstone project.pdf**: Network diagram for the project
-* **kops-cluster.png**: To check that we do have instances running as master and nodes.
-* **jenkins-success.png**: With all the steps of the pipeline succeeding.
-* **lint-step.png**: With the details of the linting step, to check both Python and Dockerfiles.
-* **k8s-services**: With the result of the correct deployment of the kubernetes templates.
-* **load-balancer-service**: Showing the details of the flask service created as a Load Balancer.
-* **test-pmbrull-k8**: Testing the deployed application.
+* **blue-service-webpage-v4.png**: screenshot to indicate updated app for blue service
+* **blue-service-pipeline-success.png**: screenshot indicates pipeline for blue service was successful
+* **html-lint-fail.png**: screenshot to indicate failure on lint stage
+* **AWS-EKS-Clusters.png**: screenshot to indicate clusters names that were in created in aws.
+* **Image-scan-failure.png**: screenshot to indicate failure on the aquascan image.
+* **Pipeline-security-scan.png**: screenshot indicates pipeline with aquascan
+* **ec2-instances.png**: screenshot to indicate ec2 instances used in the k8 cluster and the jenkins instance
+* **route53-hosted-zone.png**: screenshot to indicate the dns service used 
+* **green-service-pipeline-success-detail.png**: screenshot to give more info
+* **green-service-webpage-v1.png**: screenshot of green service webpage for first version of app
+* **green-service-pipeline-success.png**: screenshot of successful pipeline for green-service.
+* **aws-loadbalancers-page.png**: aws loadbalancers used for deploying each service.
 
 ---
 

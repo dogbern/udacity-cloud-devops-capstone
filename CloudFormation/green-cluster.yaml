@@ -31,7 +31,7 @@ Resources:
       EncryptionConfig:
         - Provider:
             KeyArn: >-
-              arn:aws:kms:us-east-2:620145408342:key/7d2dfe2a-b0ac-41a7-b566-8f6265112e75
+              {kms}
           Resources:
             - secrets
       Name: green-environment
