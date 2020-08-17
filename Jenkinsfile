@@ -45,7 +45,7 @@ pipeline {
             }
         }
         stage('Deploy Green Container') {
-            step {
+            steps {
                 sh 'kubectl appl -f $WORKSPACE/deployment/deployment.yaml'
                 sh 'kubectl appl -f $WORKSPACE/deployment/service.yaml'
             }
