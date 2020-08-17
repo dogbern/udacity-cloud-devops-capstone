@@ -29,14 +29,31 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(registry: [credentialsId: registryCredential]) {
-                        dockerImage.push()
+                        dockerImage.push('latest')
                     }       
                 }
             }
         }
         stage('Remove Image from Jenkins') {
             steps {
-                sh "docker rmi $registry:$BUILD_NUMBER"
+                sh "docker rmi $registry:latest"
+            }
+        }
+        stage('set current kubectl context') {
+            steps {
+                sh '$WORKSPACE/deployment/blue-context.sh'
+            }
+        }
+        stage('Deploy Green Container') {
+            steps {
+                sh 'kubectl apply -f $WORKSPACE/deployment/deployment.yaml'
+                sh 'kubectl apply -f $WORKSPACE/deployment/service.yaml'
+            }
+        }
+
+        stage('Edit DNS record set to point to Green service') {
+            steps {
+                sh '$WORKSPACE/deployment/route53.sh'
             }
         }
       
