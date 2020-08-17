@@ -36,4 +36,3 @@ This project implements a solution for blue/green deployment to achieve a zero-d
 * [Nirmata series on Kubernetes](https://www.eksworkshop.com/030_eksctl)
 * [CI/CD with Jenkins, Docker and Kubernetes on AWS](https://medium.com/@Thegaijin/ci-cd-with-jenkins-docker-and-kubernetes-26932c3a1ea)
 
-
