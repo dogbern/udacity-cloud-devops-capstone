@@ -41,7 +41,7 @@ pipeline {
         }
         stage('set current kubectl context') {
             steps {
-                sh "kubectl config use-context arn:aws:eks:us-east-2:620145408342:cluster/green-environment"
+                sh '$WORKSPACE/deployment/green-context.sh'
             }
         }
         stage('Deploy Green Container') {
