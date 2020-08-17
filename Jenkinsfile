@@ -36,7 +36,7 @@ pipeline {
         }
         stage('Remove Image from Jenkins') {
             steps {
-                sh "docker rmi $registry:latest"
+                sh "docker rmi $registry:$BUILD_NUMBER"
             }
         }
         stage('set current kubectl context') {
@@ -53,7 +53,7 @@ pipeline {
 
         stage('Edit DNS record set to point to Green service') {
             steps {
-                sh 'aws route53 change-resource-record-sets --hosted-zone-id Z047210437EDQ22T6THSN --change-batch $WORKSPACE/deployment/change_res_record_set.json'
+                sh 'aws route53 change-resource-record-sets --hosted-zone-id Z047210437EDQ22T6THSN --change-batch file://$WORKSPACE/deployment/change_res_record_set.json'
             }
         }
       
