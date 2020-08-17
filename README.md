@@ -22,8 +22,8 @@ This project implements a solution for blue/green deployment to achieve a zero-d
 ## Files
 
 * **Udacity DevOps Capstone project.pdf**: Network diagram for the project
-* **kops-cluster.png**: To check that we do have instances running as master and nodes.
-* **jenkins-success.png**: With all the steps of the pipeline succeeding.
+* **blue-service-webpage.png**: To check that we do have instances running as master and nodes.
+* **blue-service-pipeline-success.png**: With all the steps of the pipeline succeeding.
 * **lint-step.png**: With the details of the linting step, to check both Python and Dockerfiles.
 * **k8s-services**: With the result of the correct deployment of the kubernetes templates.
 * **load-balancer-service**: Showing the details of the flask service created as a Load Balancer.
