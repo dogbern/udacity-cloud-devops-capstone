@@ -1,1 +1,0 @@
-kubectl config use-context arn:aws:eks:us-east-2:620145408342:cluster/green-environment
